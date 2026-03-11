@@ -306,6 +306,63 @@
       padding: 2px 8px;
     }
 
+    /* ─── STAT CARDS ─────────────────────────────────────────  */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .stat-card::after {
+      content: "";
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .stat-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.4rem; font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .stat-card-sub {
+      font-size: 0.74rem;
+      color: var(--sub);
+      line-height: 1.5;
+    }
+    .showcase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--sub);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .project-card code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent3);
+      background: rgba(67,232,180,0.08);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+
     /* ─── EXPERIENCE ─────────────────────────────────────────  */
     .experience-list { display: flex; flex-direction: column; gap: 2px; }
     .exp-item {
@@ -444,7 +501,7 @@
           <div class="stat-lbl">Years coding</div>
         </div>
         <div>
-          <div class="stat-val">12</div>
+          <div class="stat-val">200+</div>
           <div class="stat-lbl">Projects shipped</div>
         </div>
         <div>
@@ -460,20 +517,13 @@
     <section id="skills">
       <div class="section-label fade-up">Skills</div>
       <div class="section-title fade-up">What I work with</div>
-      <!-- ✏️ EDIT: Add/remove skills. Dot colors: accent=#7b6fff, accent2=#ff6b9d, accent3=#43e8b4 -->
       <div class="skills-grid">
-        <div class="skill-chip fade-up"><span class="dot" style="background:#7b6fff"></span>TypeScript</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#43e8b4"></span>React</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#ff6b9d"></span>Node.js</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#7b6fff"></span>Python</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#43e8b4"></span>PostgreSQL</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#ff6b9d"></span>Docker</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#7b6fff"></span>Next.js</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#43e8b4"></span>Git</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#ff6b9d"></span>AWS</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#7b6fff"></span>Tailwind</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#43e8b4"></span>Redis</div>
-        <div class="skill-chip fade-up"><span class="dot" style="background:#ff6b9d"></span>Linux</div>
+        <div class="skill-chip fade-up"><span class="dot" style="background:#7b6fff"></span>Website Development</div>
+        <div class="skill-chip fade-up"><span class="dot" style="background:#43e8b4"></span>JavaScript</div>
+        <div class="skill-chip fade-up"><span class="dot" style="background:#ff6b9d"></span>Python</div>
+        <div class="skill-chip fade-up"><span class="dot" style="background:#7b6fff"></span>Lua</div>
+        <div class="skill-chip fade-up"><span class="dot" style="background:#43e8b4"></span>Scripting</div>
+        <div class="skill-chip fade-up"><span class="dot" style="background:#ff6b9d"></span>HTML &amp; CSS</div>
       </div>
     </section>
 
@@ -481,66 +531,78 @@
 
     <!-- ── PROJECTS ────────────────────────────────────────── -->
     <section id="projects">
-      <div class="section-label fade-up">Projects</div>
+      <div class="section-label fade-up">Work</div>
       <div class="section-title fade-up">Things I've built</div>
+
+      <!-- STAT CARDS -->
+      <div class="stat-cards fade-up">
+        <div class="stat-card">
+          <div class="stat-card-num">10</div>
+          <div class="stat-card-label">Websites built</div>
+          <div class="stat-card-sub">Every one delivered exactly to spec</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">50+</div>
+          <div class="stat-card-label">Discord bots</div>
+          <div class="stat-card-sub">All rated 4–5 stars by clients</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">100+</div>
+          <div class="stat-card-label">Lua systems</div>
+          <div class="stat-card-sub">Scripted across multiple projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">20+</div>
+          <div class="stat-card-label">JS projects</div>
+          <div class="stat-card-sub">From small scripts to full apps</div>
+        </div>
+      </div>
+
+      <!-- PROJECT SHOWCASE -->
+      <div class="showcase-title fade-up">Featured bots &amp; projects</div>
       <div class="projects-grid">
 
-        <!-- ✏️ EDIT: Replace with your real projects -->
         <div class="project-card fade-up">
-          <span class="project-tag">Web App</span>
-          <div class="project-title">Project Alpha</div>
-          <div class="project-stack">
-            <span class="stack-badge">Next.js</span>
-            <span class="stack-badge">TypeScript</span>
-            <span class="stack-badge">Postgres</span>
-          </div>
-          <p class="project-desc">A full-stack platform that lets teams manage and visualize their project metrics in real-time.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">GitHub →</a>
-            <a href="#" class="project-link">Live →</a>
-          </div>
-        </div>
-
-        <div class="project-card fade-up">
-          <span class="project-tag">CLI Tool</span>
-          <div class="project-title">devkit</div>
+          <span class="project-tag">Discord Bot · Python</span>
+          <div class="project-title">Coastal Core Premade Design Bot</div>
           <div class="project-stack">
             <span class="stack-badge">Python</span>
-            <span class="stack-badge">Click</span>
+            <span class="stack-badge">discord.py</span>
+            <span class="stack-badge">Slash Commands</span>
           </div>
-          <p class="project-desc">A developer productivity CLI with scaffolding, linting shortcuts, and project health checks.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">GitHub →</a>
-          </div>
+          <p class="project-desc">A full-featured colour utility bot with <code>/colorinfo</code>, <code>/colorname</code>, <code>/randomcolor</code>, <code>/gradient</code>, <code>/palette</code>, and <code>/manipulate</code> — returning rich embeds with hex, RGB, HSV and visual previews.</p>
         </div>
 
         <div class="project-card fade-up">
-          <span class="project-tag">Open Source</span>
-          <div class="project-title">shadcn-extras</div>
+          <span class="project-tag">Discord Bot · Python</span>
+          <div class="project-title">Ambulance NSW Bot</div>
           <div class="project-stack">
-            <span class="stack-badge">React</span>
-            <span class="stack-badge">Tailwind</span>
+            <span class="stack-badge">Python</span>
+            <span class="stack-badge">discord.py</span>
+            <span class="stack-badge">Roleplay</span>
           </div>
-          <p class="project-desc">A component extension library for shadcn/ui with 20+ additional primitives and patterns.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">GitHub →</a>
-            <a href="#" class="project-link">npm →</a>
-          </div>
+          <p class="project-desc">Duty management system for a roleplay community — featuring <code>/duty</code>, <code>/dutylist</code>, <code>/calls</code>, <code>/clearcall</code>, and <code>/eta</code> commands with live status tracking.</p>
         </div>
 
         <div class="project-card fade-up">
-          <span class="project-tag">API</span>
-          <div class="project-title">NexusAPI</div>
+          <span class="project-tag">Discord Bot · Python</span>
+          <div class="project-title">NSWPF Utilities Bot</div>
           <div class="project-stack">
-            <span class="stack-badge">Node.js</span>
-            <span class="stack-badge">Redis</span>
-            <span class="stack-badge">Docker</span>
+            <span class="stack-badge">Python</span>
+            <span class="stack-badge">discord.py</span>
+            <span class="stack-badge">Server Tools</span>
           </div>
-          <p class="project-desc">High-throughput REST API boilerplate with rate limiting, auth, and built-in observability.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">GitHub →</a>
-            <a href="#" class="project-link">Docs →</a>
+          <p class="project-desc">A server utilities bot with <code>/servericon</code>, <code>/rolecount</code>, <code>/randomcolor</code>, <code>/daily</code> economy rewards and an <code>/announce</code> admin command with styled embeds.</p>
+        </div>
+
+        <div class="project-card fade-up">
+          <span class="project-tag">Scripting · Lua</span>
+          <div class="project-title">100+ Lua Systems</div>
+          <div class="project-stack">
+            <span class="stack-badge">Lua</span>
+            <span class="stack-badge">Scripting</span>
           </div>
+          <p class="project-desc">Over a hundred custom Lua systems scripted for clients — covering game logic, automation, UI handlers, and server-side systems, all built to exact requirements.</p>
         </div>
 
       </div>
@@ -594,7 +656,7 @@
         <p class="contact-sub">Open to full-time roles, freelance projects, and interesting collaborations.</p>
         <!-- ✏️ EDIT: Replace hrefs with your real links/email -->
         <div class="contact-links">
-          <a href="mailto:you@example.com" class="contact-link">
+          <a href="/cdn-cgi/l/email-protection#4f2d202a26212823262e220f203a3b23202024612c2022" class="contact-link">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             Email me
           </a>
@@ -602,13 +664,9 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
           </a>
-          <a href="https://linkedin.com/in/boeing" target="_blank" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://twitter.com/boeing" target="_blank" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Twitter
+          <a href="https://discord.com/users/boeing_2_alt" target="_blank" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            boeing_2_alt
           </a>
         </div>
       </div>
@@ -624,21 +682,10 @@
   </footer>
 
   <!-- ── SCROLL ANIMATION JS ─────────────────────────────────── -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
           // stagger siblings
           const siblings = [...e.target.parentElement.querySelectorAll('.fade-up')];
-          const idx = siblings.indexOf(e.target);
-          e.target.style.transitionDelay = (idx * 60) + 'ms';
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-  </script>
-</body>
-</html>
+          const idx = siblings.indexOf(e.targ
