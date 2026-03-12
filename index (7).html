@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fire CAD/MDT</title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <div class="shell" style="display:flex; flex-direction:column; min-height:100vh; justify-content:center; align-items:center;">
+      <img src="/frnsw-logo.png" alt="FRNSW" style="position:fixed; top:16px; left:16px; height:110px; width:auto; z-index:100;" />
+      <div style="width:100%; max-width:520px; display:flex; align-items:center; gap:16px; margin-bottom:4px;">
+        <div class="brand">
+          <h1>Fire CAD/MDT</h1>
+
+        </div>
+      </div>
+
+      <div class="grid" style="max-width: 520px; width:100%;">
+        <div class="card">
+          <div class="hd"><h2>Login</h2></div>
+          <div class="bd">
+            <div class="row">
+              <div>
+                <label>Role</label>
+                <select id="role">
+                  <option value="dispatch">Dispatcher</option>
+                  <option value="unit">Unit (MDT)</option>
+                </select>
+              </div>
+              <div id="callsignWrap" style="display: none">
+                <label>Callsign</label>
+                <input id="callsign" placeholder="e.g. PUMPA1" />
+              </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+              <div>
+                <label>Roblox username</label>
+                <input id="username" placeholder="Your Roblox username" autocomplete="username" />
+              </div>
+              <div>
+                <label>Password</label>
+                <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+              </div>
+            </div>
+
+            <div style="margin-top: 12px; display: flex; gap: 10px; align-items: center;">
+              <button class="btn primary" id="loginBtn">Login</button>
+              <span class="muted" id="msg"></span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const roleEl = document.getElementById("role");
+      const callsignWrap = document.getElementById("callsignWrap");
+      roleEl.addEventListener("change", () => {
+        callsignWrap.style.display = roleEl.value === "unit" ? "block" : "none";
+      });
+
+      async function login() {
+        const role = roleEl.value;
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+        const callsign = document.getElementById("callsign").value;
+        const msg = document.getElementById("msg");
+        msg.textContent = "Logging in...";
+
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ role, username, password, callsign })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok) {
+          msg.textContent = data.error || "Login failed";
+          return;
+        }
+        window.location.href = role === "dispatch" ? "/dispatch" : "/mdt";
+      }
+
+      document.getElementById("loginBtn").addEventListener("click", login);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") login();
+      });
+    </script>
+  </body>
+</html>
+
